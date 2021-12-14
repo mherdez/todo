@@ -3,7 +3,7 @@
   user-select: none;
 }
 body {
-  background: url("/images/bg-desktop-light.jpg") no-repeat;
+  background: url("./images/bg-desktop-light.jpg") no-repeat;
 }
 h1 {
   margin: 0;
