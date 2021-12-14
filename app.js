@@ -15,6 +15,7 @@ let actividades = [
 
 const $divRowContent = document.querySelector(".row-content");
 const $inputNewTodo = document.querySelector("#new-todo");
+const $pNewTodoText = document.querySelector('#new-text')
 
 const crearActividad = (array, index, drag = true) => {
   const $divRow = document.createElement("div");
@@ -32,7 +33,7 @@ const crearActividad = (array, index, drag = true) => {
   $inputCheckbox.setAttribute("onclick", `pintar('${index}')`);
   $inputCheckbox.classList.add("row-checkbox");
 
-  $divRow.setAttribute("id", $inputCheckbox.id);
+  $divRow.setAttribute("id", "row-"+index);
 
   $labelActividad.setAttribute("for", $inputCheckbox.id);
   $labelActividad.textContent = array.item;
@@ -167,6 +168,15 @@ $inputNewTodo.addEventListener("keyup", ({ key }) => {
     $inputNewTodo.value = "";
   }
 });
+$inputNewTodo.addEventListener('blur', () => {
+  $pNewTodoText.textContent = 'Create a new todo...'
+    $pNewTodoText.classList.remove('new-text')
+    $inputNewTodo.value = "";
+})
+$inputNewTodo.addEventListener('focus', () => {
+  $pNewTodoText.textContent = 'Currently typing'
+  $pNewTodoText.classList.add('new-text')
+})
 
 visualizarActividades(actividades);
 
